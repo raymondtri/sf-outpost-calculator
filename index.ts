@@ -4,7 +4,7 @@ import R from './resources/_index';
 const end = () => console.log("Goodbye.");
 
 program
-  .name('starfield outpost cli')
+  .name('npm run socli')
   .description('A CLI for calculating the resources required to build a starfield outpost, with a description written by autopilot.')
 
 program.command('list')

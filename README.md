@@ -5,7 +5,7 @@
 
 ## Package
 ```
-Usage: starfield outpost cli [options] [command]
+Usage: npm run socli [options] [command]
 
 A CLI for calculating the resources required to build a starfield outpost, with a description written by autopilot.
 
