@@ -70,6 +70,7 @@ export default class Resource implements IResource {
   get deep(){
     let d = JSON.parse(JSON.stringify(this));
     d.name = this.name;
+    d.components = this.components;
     return d;
   }
 
