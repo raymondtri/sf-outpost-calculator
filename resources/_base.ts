@@ -43,10 +43,12 @@ export default class Resource implements IResource {
   get formatted(){
     let j:any = this;
     delete j.index;
-    if(j.components.length === 0) {
-      delete j.components;
-    } else {
-      j.components = j.components.map((c:Resource) => c.formatted);
+    if(j.components){
+      if(j.components.length >= 0) {
+        j.components = j.components.map((c:Resource) => c.formatted);
+      } else {
+        delete j.components;
+      }
     }
     return j;
   }

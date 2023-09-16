@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import R from './resources/_index';
+import R from './resources/index';
 
 const end = () => console.log("Goodbye.");
 
@@ -14,13 +14,13 @@ program.command('list')
     console.log(`Here is a list of all resources${a ? ' alphabetically' : ''}:`)
     if(a){
       let min_len = 32;
-      Object.values(R).sort((a, b) => a.name.localeCompare(b.name)).forEach((r, i) => {
+      Object.values(R.all).sort((a, b) => a.name.localeCompare(b.name)).forEach((r, i) => {
         let base = `  ${r.name}: `;
         while(base.length < min_len - r.index.toString().length) base += ' ';
         console.log(`${base}${r.index}`);
       });
     } else {
-      Object.values(R).forEach((r, i) => {
+      Object.values(R.all).forEach((r, i) => {
         console.log(`  ${r.index}: ${r.name}`);
       });
     }
