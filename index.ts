@@ -5,7 +5,7 @@ const end = () => console.log("Goodbye.");
 
 program
   .name('npm run socli')
-  .description('A CLI for calculating the resources required to build a starfield outpost, with a description written by autopilot.')
+  .description("A CLI for calculating the resources required to build a starfield outpost, with a description written by autopilot.\n\nI don't have pharmaceuticals in here if they depend on something that isn't gatherable or craftable.")
 
 program.command('list')
   .description('List all resources, use the ids in other commands')
