@@ -1,11 +1,14 @@
 export interface IResource {
   index: number;
+  _name: string;
   name: string;
   quantity: number;
   components?: IResource[];
   baseComponents: IResource[];
   qty: (qty: number) => IResource;
+  scale: (qty: number) => IResource;
   formatted: any;
+  gatherable: boolean;
 }
 
 let index = 0;
@@ -13,12 +16,13 @@ let index = 0;
 export default class Resource implements IResource {
 
   index: number = index++;
-  name: string;
+  _name: string;
   quantity: number = 1;
   components: IResource[];
+  gatherable: boolean = true;
 
   constructor(name: string, components: IResource[]){
-    this.name = name;
+    this._name = name;
     this.components = components;
   }
 
@@ -41,7 +45,9 @@ export default class Resource implements IResource {
   }
 
   get formatted(){
-    let j:any = this;
+    let j:any = this.deep;
+    delete j._name;
+    delete j.gatherable;
     delete j.index;
     if(j.components){
       if(j.components.length >= 0) {
@@ -53,8 +59,28 @@ export default class Resource implements IResource {
     return j;
   }
 
+  set name(val){
+    throw new Error('Name is immutable.');
+  }
+
+  get name(){
+    return this._name + (this.gatherable ? '' : ' (not gatherable)');
+  }
+  
+  get deep(){
+    let d = JSON.parse(JSON.stringify(this));
+    d.name = this.name;
+    return d;
+  }
+
   qty(qty: number){
     this.quantity = qty;
+    //this.components.map(component => component.scale(qty))
+    // need to get this solved for scaling, so that it can set all components below it as well.
     return this;
+  }
+
+  scale(qty: number){
+    return this.qty(this.quantity * qty);
   }
 }

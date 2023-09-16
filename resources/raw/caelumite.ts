@@ -1,3 +1,5 @@
 import Resource from "../_base";
 
-export const caelumite = new Resource("Caelumite", []);
+var c = new Resource("Caelumite", []);
+c.gatherable = false;
+export const caelumite = c;

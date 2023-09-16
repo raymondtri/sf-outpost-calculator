@@ -7,7 +7,9 @@
 ```
 Usage: npm run socli [options] [command]
 
-A CLI for calculating the resources required to build a starfield outpost, with a description written by autopilot.
+A CLI for calculating the resources required to build a starfield outpost, as well as pharmaceuticals, with a description written by autopilot.
+
+I don't have pharmaceuticals in here if they depend on something that isn't gatherable or craftable.
 
 Options:
   -h, --help      display help for command
